@@ -10,72 +10,72 @@ https: //github.com/LineageOS/android_frameworks_base/commit/91e7522cb28d2b1e2e1
 Change-Id: Iff64bf89566f6773e49496d29fe0099cda45bbf3
 ---
  .../protocol/ICustomCaptureResult.smali       | 32 +++++++++++++++++--
- 1 file changed, 30 insertions(+), 2 deletions(-)
-
+ 1 file changed, 32 insertions(+), 2 deletions(-)
+ 
 diff --git a/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali b/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
-index 56ecf5af8..c799f7fdc 100644
+index 5bbc364f..3c5937ba 100644
 --- a/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
 +++ b/smali_classes2/com/xiaomi/protocol/ICustomCaptureResult.smali
-@@ -346,7 +346,7 @@
+@@ -261,7 +261,7 @@
  .end method
  
  .method public static toTotalCaptureResult(Lcom/xiaomi/protocol/ICustomCaptureResult;IZ)Landroid/hardware/camera2/TotalCaptureResult;
--    .locals 23
-+    .locals 27
+-    .locals 22
++    .locals 26
  
-     const-string v0, "android.hardware.camera2.impl.PhysicalCaptureResultInfo"
+     const-string v0, "|"
  
-@@ -434,7 +434,7 @@
+@@ -336,7 +336,7 @@
  
-     if-lt v7, v8, :cond_0
+     if-lt v6, v7, :cond_0
  
--    const/16 v7, 0xb
-+    const/16 v7, 0xd
+-    const/16 v6, 0xb
++    const/16 v6, 0xd
  
      :try_start_1
-     new-array v8, v7, [Ljava/lang/Class;
-@@ -488,6 +488,18 @@
+     new-array v7, v6, [Ljava/lang/Class;
+@@ -387,6 +387,18 @@
  
-     aput-object v19, v8, v21
+     aput-object v18, v7, v20
  
-+    sget-object v19, Ljava/lang/Boolean;->TYPE:Ljava/lang/Class;
++    sget-object v18, Ljava/lang/Boolean;->TYPE:Ljava/lang/Class;
 +
-+    const/16 v23, 0xb
++    const/16 v21, 0xb
 +
-+    aput-object v19, v8, v23
++    aput-object v18, v7, v21
 +
-+    sget-object v19, Ljava/lang/Long;->TYPE:Ljava/lang/Class;
++    sget-object v18, Ljava/lang/Long;->TYPE:Ljava/lang/Class;
 +
-+    const/16 v24, 0xc
++    const/16 v22, 0xc
 +
-+    aput-object v19, v8, v24
++    aput-object v18, v7, v22
 +
-     .line 8
-     invoke-virtual {v1, v8}, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+     invoke-virtual {v0, v7}, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
  
-@@ -565,6 +577,22 @@
+     move-result-object v7
+@@ -459,6 +471,22 @@
  
-     aput-object v19, v7, v21
+     aput-object v18, v6, v20
  
-+    const/16 v25, 0x0
++    const/16 v23, 0x0
 +
-+    invoke-static/range {v25 .. v25}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
++    invoke-static/range {v23 .. v23}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 +
-+    move-result-object v19
++    move-result-object v18
 +
-+    aput-object v19, v7, v23
++    aput-object v18, v6, v21
 +
-+    const/16 v26, 0x0
++    const/16 v24, 0x0
 +
-+    invoke-static/range {v26 .. v26}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
++    invoke-static/range {v24 .. v24}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 +
-+    move-result-object v19
++    move-result-object v18
 +
-+    aput-object v19, v7, v24
++    aput-object v18, v6, v22
 +
-     .line 11
-     invoke-virtual {v8, v7}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+     invoke-virtual {v7, v6}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
  
+     move-result-object v0
+
 -- 
 2.43.0
-

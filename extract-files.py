@@ -18,7 +18,7 @@ from extract_utils.main import (
 )
 
 namespace_imports = [
-    'vendor/miuicamera-sweet',
+    'vendor/miuicamera-davinci',
 ]
 
 
@@ -32,11 +32,9 @@ blob_fixups: blob_fixups_user_type = {
         .sig_replace('08 AD 40 F9', '08 A9 40 F9'),
     'system/lib64/libcamera_mianode_jni.xiaomi.so': blob_fixup()
         .add_needed('libgui_shim_miuicamera.so'),
-    'system/lib64/libmicampostproc_client.so': blob_fixup()
-        .remove_needed('libhidltransport.so'),
     'system/priv-app/MiuiCamera/MiuiCamera.apk': blob_fixup()
         .apktool_patch('patches'),
-    ('vendor/lib64/hw/camera.qcom.so', 'vendor/lib64/libFaceDetectpp-0.5.2.so', 'vendor/lib64/libfacedet.so'): blob_fixup()
+    ('vendor/lib64/libFaceDetectpp-0.5.2.so', 'vendor/lib64/libfacedet.so'): blob_fixup()
         .binary_regex_replace(b'libmegface.so', b'libfacedet.so')
         .binary_regex_replace(b'libMegviiFacepp-0.5.2.so', b'libFaceDetectpp-0.5.2.so')
         .binary_regex_replace(b'megviifacepp_0_5_2_model', b'facedetectpp_0_5_2_model'),
@@ -44,8 +42,8 @@ blob_fixups: blob_fixups_user_type = {
 
 module = ExtractUtilsModule(
     'xiaomi',
-    'miuicamera-sweet',
-    device_rel_path='vendor/miuicamera-sweet',
+    'miuicamera-davinci',
+    device_rel_path='vendor/miuicamera-davinci',
     blob_fixups=blob_fixups,
     lib_fixups=lib_fixups,
     namespace_imports=namespace_imports,
